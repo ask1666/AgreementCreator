@@ -1,0 +1,56 @@
+plugins {
+    id("groovy") 
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("io.micronaut.application") version "3.6.3"
+}
+
+version = "0.1"
+group = "no.agreementCreator.fagsystem"
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDirs = ['src/main/java', 'src/main/groovy'] as SourceSet }
+    }
+}
+
+dependencies {
+    annotationProcessor "org.projectlombok:lombok"
+    annotationProcessor "io.micronaut:micronaut-http-validation"
+
+    implementation 'org.codehaus.groovy:groovy-all:3.0.13'
+    implementation "io.micronaut:micronaut-http-client"
+    implementation "io.micronaut:micronaut-jackson-databind"
+    implementation "jakarta.annotation:jakarta.annotation-api"
+
+    compileOnly "org.projectlombok:lombok"
+    runtimeOnly "ch.qos.logback:logback-classic"
+    implementation "io.micronaut:micronaut-validation"
+
+}
+
+
+application {
+    mainClass.set("no.agreementCreator.fagsystem.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion(17)
+    targetCompatibility = JavaVersion.toVersion(17)
+}
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime "netty"
+    testRuntime "spock2"
+    processing {
+        incremental true
+        annotations "no.agreementCreator.fagsystem.*"
+    }
+}
+
+
+

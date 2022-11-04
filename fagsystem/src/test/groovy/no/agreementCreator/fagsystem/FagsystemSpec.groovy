@@ -1,0 +1,19 @@
+package no.agreementCreator.fagsystem
+
+import io.micronaut.runtime.EmbeddedApplication
+import io.micronaut.test.extensions.spock.annotation.MicronautTest
+import spock.lang.Specification
+import jakarta.inject.Inject
+
+@MicronautTest
+class FagsystemSpec extends Specification {
+
+    @Inject
+    EmbeddedApplication<? extends EmbeddedApplication> application
+
+    def 'test it works'() {
+        expect:
+        application.running
+    }
+
+}
