@@ -6,8 +6,8 @@ import io.micronaut.http.annotation.PathVariable;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
 import no.agreementcreator.shared.models.AgreementStatus;
-import no.agreementcreator.shared.models.RegisterAgreementRequest;
-import no.agreementcreator.shared.models.RegisterCustomerRequest;
+import no.agreementcreator.shared.models.CreateAgreementRequest;
+import no.agreementcreator.shared.models.CreateCustomerRequest;
 
 import java.util.UUID;
 
@@ -20,14 +20,14 @@ public class FagsystemController {
         this.fagsystemService = fagsystemService;
     }
 
-    @Post("/customers/register")
-    public UUID registerCustomer(@Body RegisterCustomerRequest request) {
-        return fagsystemService.registerCustomer(request).getId();
+    @Post("/customers/create")
+    public UUID createCustomer(@Body CreateCustomerRequest request) {
+        return fagsystemService.createCustomer(request).getId();
     }
 
-    @Post("/agreements/register")
-    public UUID registerAgreement(@Body RegisterAgreementRequest request) {
-        return fagsystemService.registerAgreement(request).getId();
+    @Post("/agreements/create")
+    public UUID createAgreement(@Body CreateAgreementRequest request) {
+        return fagsystemService.createAgreement(request).getId();
     }
 
     @Put("/agreements/{id}/{status}")

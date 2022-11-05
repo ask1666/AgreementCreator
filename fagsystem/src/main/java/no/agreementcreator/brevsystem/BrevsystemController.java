@@ -3,8 +3,9 @@ package no.agreementcreator.brevsystem;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Post;
-import no.agreementcreator.shared.models.Agreement;
 import no.agreementcreator.shared.models.AgreementStatus;
+
+import java.util.UUID;
 
 @Controller(value = "/brevsystem", port = "8084")
 public class BrevsystemController {
@@ -16,8 +17,8 @@ public class BrevsystemController {
     }
 
     @Post("/send")
-    public AgreementStatus send(@Body Agreement agreement) {
-        return service.sendAgreement(agreement);
+    public AgreementStatus send(@Body UUID agreementId) {
+        return service.sendAgreement(agreementId);
     }
 
 }

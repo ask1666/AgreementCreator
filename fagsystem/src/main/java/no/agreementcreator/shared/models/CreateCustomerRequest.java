@@ -9,13 +9,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Introspected
-public class RegisterCustomerRequest {
+public class CreateCustomerRequest {
 
     private String firstName;
     private String lastName;
 
-    public static RegisterCustomerRequest of(String firstName, String lastName) {
-        RegisterCustomerRequest customer = new RegisterCustomerRequest();
+    public static CreateCustomerRequest of(String firstName, String lastName) {
+        CreateCustomerRequest customer = new CreateCustomerRequest();
 
         customer.setFirstName(firstName);
         customer.setLastName(lastName);
@@ -32,7 +32,7 @@ public class RegisterCustomerRequest {
     public String toString() {
         return "Customer{" +
             "firstName='" + firstName + '\'' +
-            ", LastName='" + lastName + '\'' +
+            ", lastName='" + lastName + '\'' +
             '}';
     }
 }

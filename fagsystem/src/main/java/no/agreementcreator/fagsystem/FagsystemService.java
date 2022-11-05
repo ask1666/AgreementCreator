@@ -3,9 +3,9 @@ package no.agreementcreator.fagsystem;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.exceptions.HttpStatusException;
 import no.agreementcreator.shared.models.AgreementStatus;
-import no.agreementcreator.shared.models.RegisterAgreementRequest;
+import no.agreementcreator.shared.models.CreateAgreementRequest;
 import no.agreementcreator.shared.models.Agreement;
-import no.agreementcreator.shared.models.RegisterCustomerRequest;
+import no.agreementcreator.shared.models.CreateCustomerRequest;
 import no.agreementcreator.shared.models.Customer;
 
 import jakarta.inject.Singleton;
@@ -20,7 +20,7 @@ public class FagsystemService {
         this.db = db;
     }
 
-    public Customer registerCustomer(RegisterCustomerRequest request) {
+    public Customer createCustomer(CreateCustomerRequest request) {
         if (!request.canRegister()) {
             throw new HttpStatusException(HttpStatus.BAD_REQUEST, "Invalid customer.");
         }
@@ -31,7 +31,7 @@ public class FagsystemService {
         return customer;
     }
 
-    public Agreement registerAgreement(RegisterAgreementRequest request) {
+    public Agreement createAgreement(CreateAgreementRequest request) {
         if (!request.canRegister()) {
             throw new HttpStatusException(HttpStatus.BAD_REQUEST, "Invalid agreement.");
         }

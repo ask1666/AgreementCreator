@@ -17,15 +17,15 @@ public class Agreement {
     private UUID id;
     private AgreementType type;
     private AgreementStatus status;
-    private Customer customer;
+    private UUID customerId;
 
-    public static Agreement from(RegisterAgreementRequest request) {
+    public static Agreement from(CreateAgreementRequest request) {
         Agreement response = new Agreement();
 
         response.setId(UUID.randomUUID());
         response.setType(request.getAgreementType());
         response.setAgreementStatus(AgreementStatus.REGISTERED);
-        response.setCustomer(request.getCustomer());
+        response.setCustomerId(request.getCustomerId());
 
         return response;
     }
@@ -40,7 +40,7 @@ public class Agreement {
             "id=" + id +
             ", type=" + type +
             ", status=" + status +
-            ", customer=" + customer +
+            ", customerId=" + customerId +
             '}';
     }
 }

@@ -21,7 +21,7 @@ public class Customer {
     private String lastName;
     private Set<Agreement> agreements;
 
-    public static Customer from(RegisterCustomerRequest request) {
+    public static Customer from(CreateCustomerRequest request) {
         Customer customer = new Customer();
 
         customer.setId(UUID.randomUUID());
