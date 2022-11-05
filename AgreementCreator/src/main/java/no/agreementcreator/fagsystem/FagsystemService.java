@@ -7,12 +7,16 @@ import no.agreementcreator.shared.models.CreateAgreementRequest;
 import no.agreementcreator.shared.models.Agreement;
 import no.agreementcreator.shared.models.CreateCustomerRequest;
 import no.agreementcreator.shared.models.Customer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jakarta.inject.Singleton;
 import java.util.UUID;
 
 @Singleton
 public class FagsystemService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final FakeDB db;
 
@@ -28,6 +32,8 @@ public class FagsystemService {
         var customer = Customer.from(request);
         db.persistCustomer(customer);
 
+        logger.info("Registered customer: {}", customer);
+
         return customer;
     }
 
@@ -39,6 +45,9 @@ public class FagsystemService {
         var agreement = Agreement.from(request);
         db.persistAgreement(agreement);
 
+        logger.info("Registered agreement: {}", agreement);
+        logger.info("Customer is now: {}", db.getCustomer(agreement.getCustomerId()));
+
         return agreement;
     }
 
@@ -47,6 +56,9 @@ public class FagsystemService {
 
         agreement.setAgreementStatus(status);
         db.persistAgreement(agreement);
+
+        logger.info("Updated status of agreement: {}", agreement);
+
 
         return status;
     }

@@ -23,9 +23,16 @@ class BrevsystemControllerTest extends Specification {
 
     def 'Send'() {
         given:
-            Agreement agreement = Agreement.from(CreateAgreementRequest.of(AgreementType.AVTALE_TYPE_1, UUID.randomUUID()))
+            Agreement agreement = Agreement.from(
+                CreateAgreementRequest.of(AgreementType.AVTALE_TYPE_1, UUID.randomUUID())
+            )
         when:
-            def response = client.toBlocking().retrieve(HttpRequest.POST('/send', agreement.getId()), AgreementStatus)
+            def response = client
+                .toBlocking()
+                .retrieve(
+                    HttpRequest.POST('/send', agreement.getId()),
+                    AgreementStatus
+                )
         then:
             response == SENT
     }

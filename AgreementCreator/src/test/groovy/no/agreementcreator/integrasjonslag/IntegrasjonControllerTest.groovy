@@ -27,9 +27,14 @@ class IntegrasjonControllerTest extends Specification {
                 lastName: 'Nordmann'
             )
         when:
-            RegisterAgreementResponse response = client.toBlocking().retrieve(HttpRequest.POST("/registerAgreement", registerAgreementRequest), RegisterAgreementResponse.class)
+            RegisterAgreementResponse response =
+                client
+                    .toBlocking()
+                    .retrieve(
+                        HttpRequest.POST("/registerAgreement", registerAgreementRequest),
+                        RegisterAgreementResponse.class
+                    )
         then:
-            println response
             response.agreementId().toString().length() == 36
             response.status() == AgreementStatus.SENT
     }

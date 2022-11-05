@@ -23,13 +23,14 @@ class FagsystemServiceTest extends Specification {
         then:
             customer.getId().toString().length() == 36
         when:
-            Agreement agreement = service.createAgreement(CreateAgreementRequest.of(AgreementType.AVTALE_TYPE_1, customer.getId()))
+            Agreement agreement = service.createAgreement(
+                CreateAgreementRequest.of(AgreementType.AVTALE_TYPE_1, customer.getId())
+            )
         then:
             agreement.getId().toString().length() == 36
             agreement.status == AgreementStatus.REGISTERED
             db.getCustomer(agreement.customerId) == customer
             db.getAgreement(agreement.getId()) == agreement
-
     }
 
     def 'Update status'() {
@@ -37,7 +38,9 @@ class FagsystemServiceTest extends Specification {
             CreateCustomerRequest customerRequest = CreateCustomerRequest.of('Ola', 'Nordmann')
         when:
             Customer customer = service.createCustomer(customerRequest)
-            Agreement agreement = service.createAgreement(CreateAgreementRequest.of(AgreementType.AVTALE_TYPE_1, customer.getId()))
+            Agreement agreement = service.createAgreement(
+                CreateAgreementRequest.of(AgreementType.AVTALE_TYPE_1, customer.getId())
+            )
         and:
             AgreementStatus status = service.updateAgreementStatus(agreement.getId(), AgreementStatus.SENT)
         then:

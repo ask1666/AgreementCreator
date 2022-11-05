@@ -23,7 +23,13 @@ class FagsystemControllerTest extends Specification {
         given:
             CreateCustomerRequest customerRequest = CreateCustomerRequest.of('Ola', 'Nordmann')
         when:
-            UUID customerUuid = client.toBlocking().retrieve(HttpRequest.POST('/customers/create', customerRequest), UUID)
+            UUID customerUuid =
+                client
+                    .toBlocking()
+                    .retrieve(
+                        HttpRequest.POST('/customers/create', customerRequest),
+                        UUID
+                    )
         then:
             customerUuid.toString().length() == 36
     }
@@ -34,7 +40,13 @@ class FagsystemControllerTest extends Specification {
             UUID customerId = client.toBlocking().retrieve(HttpRequest.POST('/customers/create', customerRequest), UUID)
             CreateAgreementRequest agreementRequest = CreateAgreementRequest.of(AgreementType.AVTALE_TYPE_1, customerId)
         when:
-            UUID agreementUuid = client.toBlocking().retrieve(HttpRequest.POST('/agreements/create', agreementRequest), UUID)
+            UUID agreementUuid =
+                client
+                    .toBlocking()
+                    .retrieve(
+                        HttpRequest.POST('/agreements/create', agreementRequest),
+                        UUID
+                    )
         then:
             agreementUuid.toString().length() == 36
     }
@@ -46,7 +58,11 @@ class FagsystemControllerTest extends Specification {
             CreateAgreementRequest agreementRequest = CreateAgreementRequest.of(AgreementType.AVTALE_TYPE_1, customerId)
             UUID agreementId = client.toBlocking().retrieve(HttpRequest.POST('/agreements/create', agreementRequest), UUID)
         when:
-            AgreementStatus status = client.toBlocking().retrieve(HttpRequest.PUT("/agreements/${agreementId}/${AgreementStatus.SENT}", null), AgreementStatus)
+            AgreementStatus status = client
+                .toBlocking()
+                .retrieve(
+                    HttpRequest.PUT("/agreements/${agreementId}/${AgreementStatus.SENT}", null),
+                    AgreementStatus)
         then:
             status == AgreementStatus.SENT
     }

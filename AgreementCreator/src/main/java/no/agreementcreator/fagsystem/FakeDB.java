@@ -23,6 +23,7 @@ public class FakeDB {
     public Customer getCustomer(Customer customer) {
         return getCustomer(customer.getId());
     }
+
     public Customer getCustomer(UUID customerId) {
         return customers.stream()
             .filter(c -> Objects.equals(c.getId(), customerId))
@@ -31,12 +32,10 @@ public class FakeDB {
     }
 
     public void persistCustomer(Customer customer) {
-        if (getCustomer(customer) == null) {
-            customers.add(customer);
-        } else {
+        if (getCustomer(customer) != null) {
             removeCustomer(customer);
-            customers.add(customer);
         }
+        customers.add(customer);
     }
 
     public void removeCustomer(Customer customer) {
@@ -55,15 +54,11 @@ public class FakeDB {
     }
 
     public void persistAgreement(Agreement agreement) {
-        if (getAgreement(agreement) == null) {
-            Customer customer = getCustomer(agreement.getCustomerId());
-            customer.addAgreement(agreement);
-            persistCustomer(customer);
-            agreements.add(agreement);
-        } else {
-            agreements.remove(agreement);
-            agreements.add(agreement);
-        }
+        Customer customer = getCustomer(agreement.getCustomerId());
+
+        customer.addOrUpdateAgreement(agreement);
+        persistCustomer(customer);
+        agreements.add(agreement);
     }
 
     public void removeAgreement(Agreement agreement) {
@@ -73,6 +68,7 @@ public class FakeDB {
     public int getCustomersSize() {
         return customers.size();
     }
+
     public int getAgreementsSize() {
         return agreements.size();
     }

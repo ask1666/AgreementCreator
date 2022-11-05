@@ -2,14 +2,14 @@ package no.agreementcreator.integrasjonslag;
 
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.client.HttpClient;
+import io.micronaut.http.client.annotation.Client;
 import no.agreementcreator.shared.models.AgreementStatus;
 import no.agreementcreator.shared.models.CreateAgreementRequest;
 import no.agreementcreator.shared.models.CreateCustomerRequest;
 
-import jakarta.inject.Singleton;
 import java.util.UUID;
 
-@Singleton
+@Client
 public class BrevsystemClient {
 
     private final HttpClient httpClient;

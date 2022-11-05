@@ -19,7 +19,7 @@ public class Customer {
     private UUID id;
     private String firstName;
     private String lastName;
-    private Set<Agreement> agreements;
+    private Set<Agreement> agreements = new HashSet<>();
 
     public static Customer from(CreateCustomerRequest request) {
         Customer customer = new Customer();
@@ -32,17 +32,23 @@ public class Customer {
     }
 
     public Set<Agreement> getAgreements() {
-        if (agreements == null) {
-            agreements = new HashSet<>();
-        }
         return agreements;
     }
 
-    public void addAgreement(Agreement agreement) {
-        if (agreements == null) {
-            agreements = new HashSet<>();
-        }
+    public void addOrUpdateAgreement(Agreement agreement) {
+        agreements.remove(agreement);
         agreements.add(agreement);
+    }
+
+    public void addAgreement(Agreement agreement) {
+        agreements.add(agreement);
+    }
+
+    public void removeAgreement(Agreement agreement) {
+        agreements.stream()
+            .filter(a -> a.getId() == agreement.getId())
+            .findAny()
+            .ifPresent(agreements::remove);
     }
 
     @Override

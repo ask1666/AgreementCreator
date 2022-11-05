@@ -5,11 +5,6 @@ import io.micronaut.http.annotation.Post;
 import no.agreementcreator.shared.models.RegisterAgreementRequest;
 import no.agreementcreator.shared.models.RegisterAgreementResponse;
 
-/**
- * TODO - Asbjørn: Log various steps.
- *  More tests checking states etc.
- *  Also client/Systemtest
- */
 @Controller(value = "/integrasjon", port = "8080")
 public class IntegrasjonController {
 
