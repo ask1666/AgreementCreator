@@ -1,14 +1,14 @@
-package no.agreementCreator.fagsystem;
+package no.agreementcreator.fagsystem;
 
-import groovy.lang.Singleton;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.exceptions.HttpStatusException;
-import no.agreementCreator.shared.models.AgreementStatus;
-import no.agreementCreator.shared.models.RegisterAgreementRequest;
-import no.agreementCreator.shared.models.Agreement;
-import no.agreementCreator.shared.models.RegisterCustomerRequest;
-import no.agreementCreator.shared.models.Customer;
+import no.agreementcreator.shared.models.AgreementStatus;
+import no.agreementcreator.shared.models.RegisterAgreementRequest;
+import no.agreementcreator.shared.models.Agreement;
+import no.agreementcreator.shared.models.RegisterCustomerRequest;
+import no.agreementcreator.shared.models.Customer;
 
+import jakarta.inject.Singleton;
 import java.util.UUID;
 
 @Singleton

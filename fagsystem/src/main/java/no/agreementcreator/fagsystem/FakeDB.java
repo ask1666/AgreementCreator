@@ -1,9 +1,10 @@
-package no.agreementCreator.fagsystem;
+package no.agreementcreator.fagsystem;
 
-import groovy.lang.Singleton;
-import no.agreementCreator.shared.models.Agreement;
-import no.agreementCreator.shared.models.Customer;
+import no.agreementcreator.shared.models.Agreement;
+import no.agreementcreator.shared.models.Customer;
 
+import jakarta.inject.Singleton;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -11,17 +12,17 @@ import java.util.UUID;
 @Singleton
 public class FakeDB {
 
-    Set<Customer> customers = new HashSet<>();
-    Set<Agreement> agreements = new HashSet<>();
+    private final Set<Customer> customers = Collections.synchronizedSet(new HashSet<>());
+    private final Set<Agreement> agreements = Collections.synchronizedSet(new HashSet<>());
 
-    public synchronized Customer getCustomer(Customer customer) {
+    public Customer getCustomer(Customer customer) {
         return customers.stream()
             .filter(c -> c.getId() == customer.getId())
             .findAny()
             .orElse(null);
     }
 
-    public synchronized void persistCustomer(Customer customer) {
+    public void persistCustomer(Customer customer) {
         if (getCustomer(customer) == null) {
             customers.add(customer);
         }
@@ -29,22 +30,22 @@ public class FakeDB {
         customers.add(customer);
     }
 
-    public synchronized void removeCustomer(Customer customer) {
+    public void removeCustomer(Customer customer) {
         customers.remove(customer);
     }
 
-    public synchronized Agreement getAgreement(Agreement agreement) {
+    public Agreement getAgreement(Agreement agreement) {
         return getAgreement(agreement.getId());
     }
 
-    public synchronized Agreement getAgreement(UUID id) {
+    public Agreement getAgreement(UUID id) {
         return agreements.stream()
             .filter(c -> c.getId() == id)
             .findAny()
             .orElse(null);
     }
 
-    public synchronized void persistAgreement(Agreement agreement) {
+    public void persistAgreement(Agreement agreement) {
         if (getAgreement(agreement) == null) {
             Customer customer = agreement.getCustomer();
             customer.addAgreement(agreement);
@@ -55,7 +56,7 @@ public class FakeDB {
         agreements.add(agreement);
     }
 
-    public synchronized void removeAgreement(Agreement agreement) {
+    public void removeAgreement(Agreement agreement) {
         agreements.remove(agreement);
     }
 

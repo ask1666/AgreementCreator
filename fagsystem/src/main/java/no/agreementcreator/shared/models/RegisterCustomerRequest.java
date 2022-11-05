@@ -1,4 +1,4 @@
-package no.agreementCreator.shared.models;
+package no.agreementcreator.shared.models;
 
 import io.micronaut.core.annotation.Introspected;
 import lombok.Getter;

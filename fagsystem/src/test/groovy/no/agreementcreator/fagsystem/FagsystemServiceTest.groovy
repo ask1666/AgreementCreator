@@ -1,11 +1,11 @@
-package no.agreementCreator.fagsystem
+package no.agreementcreator.fagsystem
 
-import no.agreementCreator.shared.models.Agreement
-import no.agreementCreator.shared.models.AgreementStatus
-import no.agreementCreator.shared.models.AgreementType
-import no.agreementCreator.shared.models.Customer
-import no.agreementCreator.shared.models.RegisterAgreementRequest
-import no.agreementCreator.shared.models.RegisterCustomerRequest
+import no.agreementcreator.shared.models.Agreement
+import no.agreementcreator.shared.models.AgreementStatus
+import no.agreementcreator.shared.models.AgreementType
+import no.agreementcreator.shared.models.Customer
+import no.agreementcreator.shared.models.RegisterAgreementRequest
+import no.agreementcreator.shared.models.RegisterCustomerRequest
 import spock.lang.Specification
 import spock.lang.Subject
 

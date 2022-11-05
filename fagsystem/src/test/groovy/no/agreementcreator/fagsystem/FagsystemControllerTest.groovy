@@ -1,16 +1,16 @@
-package no.agreementCreator.fagsystem
+package no.agreementcreator.fagsystem
 
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.test.annotation.MockBean
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
-import no.agreementCreator.shared.models.Agreement
-import no.agreementCreator.shared.models.AgreementStatus
-import no.agreementCreator.shared.models.AgreementType
-import no.agreementCreator.shared.models.Customer
-import no.agreementCreator.shared.models.RegisterAgreementRequest
-import no.agreementCreator.shared.models.RegisterCustomerRequest
+import no.agreementcreator.shared.models.Agreement
+import no.agreementcreator.shared.models.AgreementStatus
+import no.agreementcreator.shared.models.AgreementType
+import no.agreementcreator.shared.models.Customer
+import no.agreementcreator.shared.models.RegisterAgreementRequest
+import no.agreementcreator.shared.models.RegisterCustomerRequest
 import spock.lang.Specification
 
 import jakarta.inject.Inject
@@ -22,7 +22,7 @@ class FagsystemControllerTest extends Specification {
     FagsystemService service = Mock()
 
     @Inject
-    @Client("/")
+    @Client("http://localhost:8086/fagsystem")
     HttpClient client
 
     def 'Register customer'() {

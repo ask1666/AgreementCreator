@@ -1,17 +1,17 @@
-package no.agreementCreator.fagsystem;
+package no.agreementcreator.fagsystem;
 
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.PathVariable;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
-import no.agreementCreator.shared.models.AgreementStatus;
-import no.agreementCreator.shared.models.RegisterAgreementRequest;
-import no.agreementCreator.shared.models.RegisterCustomerRequest;
+import no.agreementcreator.shared.models.AgreementStatus;
+import no.agreementcreator.shared.models.RegisterAgreementRequest;
+import no.agreementcreator.shared.models.RegisterCustomerRequest;
 
 import java.util.UUID;
 
-@Controller
+@Controller(value = "/fagsystem", port = "8086")
 public class FagsystemController {
 
     FagsystemService fagsystemService;

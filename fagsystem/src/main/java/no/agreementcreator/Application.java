@@ -1,4 +1,4 @@
-package no.agreementCreator.fagsystem;
+package no.agreementcreator;
 
 import io.micronaut.runtime.Micronaut;
 

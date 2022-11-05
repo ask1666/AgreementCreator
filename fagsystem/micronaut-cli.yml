@@ -1,5 +1,5 @@
 applicationType: default
-defaultPackage: no.agreementCreator.fagsystem
+defaultPackage: no.agreementcreator.fagsystem
 testFramework: spock
 sourceLanguage: java
 buildTool: gradle

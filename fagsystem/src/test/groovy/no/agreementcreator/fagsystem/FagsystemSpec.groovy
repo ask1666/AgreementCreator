@@ -1,6 +1,6 @@
-package no.agreementCreator.fagsystem
+package no.agreementcreator.fagsystem
 
-import io.micronaut.runtime.EmbeddedApplication
+import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import spock.lang.Specification
 import jakarta.inject.Inject
@@ -9,7 +9,7 @@ import jakarta.inject.Inject
 class FagsystemSpec extends Specification {
 
     @Inject
-    EmbeddedApplication<? extends EmbeddedApplication> application
+    EmbeddedServer application
 
     def 'test it works'() {
         expect:

@@ -5,7 +5,7 @@ plugins {
 }
 
 version = "0.1"
-group = "no.agreementCreator.fagsystem"
+group = "no.agreementcreator.fagsystem"
 
 repositories {
     mavenCentral()
@@ -35,7 +35,7 @@ dependencies {
 
 
 application {
-    mainClass.set("no.agreementCreator.fagsystem.Application")
+    mainClass.set("no.agreementcreator.fagsystem.Application")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion(17)
@@ -48,7 +48,7 @@ micronaut {
     testRuntime "spock2"
     processing {
         incremental true
-        annotations "no.agreementCreator.fagsystem.*"
+        annotations "no.agreementcreator.fagsystem.*"
     }
 }
 
