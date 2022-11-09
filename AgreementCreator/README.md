@@ -1,3 +1,11 @@
+## Getting started
+
+1. Clone the repo
+2. run ``cd AgreementCreator/AgreementCreator``
+3. run  ``gradlew build`` (or ``./gradlew build``)
+4. Go to file: ``src/test/groovy/no/agreementcreator/integrasjonslag/IntegrasjonControllerTest.groovy``
+5. Run the test.
+
 ## Micronaut 3.7.3 Documentation
 
 - [User Guide](https://docs.micronaut.io/3.7.3/guide/index.html)
